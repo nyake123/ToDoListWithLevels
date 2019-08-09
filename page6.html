@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
+<title>テストページ6</title>
+<link rel="stylesheet" href="style3.css">
+</head>
+<body>
+<!-- 広告位置 -->
+
+<div class="adbox1">
+<br><br><br><br><br>
+<br><br><br><br><br>
+</div>
+
+<div class="js-tabs">
+*自動セーブは行いません<br>
+  <ul id="tab_menu1" class="tab_menu">
+    <li><a class="Tablink" href="#page1-2">インポート・エクスポート(セーブデータ登録・読込)</a></li>
+    <br>
+    <li><a class="Tablink" href="#page1-1">タスク一覧</a></li>
+    <li><a class="Tablink" href="#page1-3">タスク登録</a></li>
+    <br>
+    <li><a class="Tablink" href="#page1-5">レベル一覧</a></li>
+    <li><a class="Tablink" href="#page1-6">レベルアップスピード管理</a></li>
+    <br>
+    <li><a class="Tablink" href="#page1-7">カテゴリ追加</a></li>
+    <li><a class="Tablink" href="#page1-8">カテゴリ削除</a></li>
+    <!-- リンクが非表示になるタブ -->
+    <li><a class="Tablink" id="NoLinkTab1" href="#page1-4"></a></li>
+    <li><a class="Tablink" id="NoLinkTab2" href="#page1-9"></a></li>
+  </ul>
+  <div id="tab_content1" class="tab_content">
+    <!-- タスク検索タブ -->
+    <div id="page1-1" class="TabPage">
+      <div id="searchConditionOnTab1-1">
+      	<form id="updateTaskStatusFormOnTab1-1">
+      	<button type="button" id="updateTaskStatusBtnOnTab1-1" style="margin-top:10px; margin-left:10px;" onclick="updateAllTaskStatus()">全タスクの状態を更新</button><br>
+      	</form>
+      	<form id="searchConditionFormOnTab1-1">
+      		タスク一覧<br>
+	      	検索条件<br>
+	      	頻度<br>
+	      	<input type="radio" name="Hindo" id="HindoId0" value="Hindo_Mishitei">未指定<br>
+	      	<input type="radio" name="Hindo" id="HindoId1" value="Hindo_Once">単発<br>
+	      	<input type="radio" name="Hindo" id="HindoId2" value="Hindo_Daily">毎日<br>
+			<input type="radio" name="Hindo" id="HindoId3" value="Hindo_SWD">曜日指定<br>
+				<span id="SWDListHyoki" style="margin-top:10px; margin-left:20px;">
+					<span style="margin-left:4px;">日</span>
+					<span style="margin-left:4px;">月</span>
+					<span style="margin-left:4px;">火</span>
+					<span style="margin-left:4px;">水</span>
+					<span style="margin-left:4px;">木</span>
+					<span style="margin-left:4px;">金</span>
+					<span style="margin-left:4px;">土</span>
+				</span>
+				<br>
+				<span id="SWDList" style="margin-top:10px; margin-left:20px;">
+					<input type="checkbox" name="Youbi" id="YoubiId1" value="Sunday">
+					<input type="checkbox" name="Youbi" id="YoubiId2" value="Monday">
+					<input type="checkbox" name="Youbi" id="YoubiId3" value="Tuesday">
+					<input type="checkbox" name="Youbi" id="YoubiId4" value="Wednesday">
+					<input type="checkbox" name="Youbi" id="YoubiId5" value="Thursday">
+					<input type="checkbox" name="Youbi" id="YoubiId6" value="Friday">
+					<input type="checkbox" name="Youbi" id="YoubiId7" value="Saturday">
+				</span><br>
+
+			<input type="radio" name="Hindo" id="HindoId4" value="Hindo_Weekly">毎週<br>
+			<input type="radio" name="Hindo" id="HindoId5" value="Hindo_Monthly">毎月<br>
+			<input type="radio" name="Hindo" id="HindoId6" value="Hindo_Yearly">毎年<br>
+			キーワード:<input type="text" name="TaskKeyword" id="TaskKeyword1"><br>
+			ステータス<br>
+			<input type="radio" name="TaskStatus" id="TaskStatus1" value="MiKanryo">未完了<br>
+			<input type="radio" name="TaskStatus" id="TaskStatus2" value="Kanryo">完了<br>
+			カテゴリ<br>
+			<select id="TaskCategoryOnTab1-1" name="TaskCategoryOnTab1-1" size="1">
+				<option value="all">全て</option>
+			</select><br>
+			<button type="button" id="searchBtnOnTab1-1" style="margin-top:10px; margin-left:50px;" onclick="searchTasks()">検索</button>
+			<button type="button" id="exportTaskBtnOnTab1-1" style="margin-top:10px; margin-left:50px;" onclick="exportSearchResultTask()" disabled>検索結果のタスクをエクスポート</button>
+			<br>
+		</form>
+      </div>
+      <hr>
+      <div id="searchResultOnTab1-1">
+      検索結果
+      <table border="1"  id="searchResultTableOnTab1-1" style="display:none" ></table>
+      </div>
+    </div>
+    <!-- インポート・エクスポートタブ -->
+    <div id="page1-2" class="TabPage">
+      インポート・エクスポート<br>
+	  <button type="button" id="LoadSaveData1" style="margin-top:10px; margin-left:30px;" onclick="LoadSaveData()">セーブデータ読込</button>
+	  <button type="button" id="OutputSaveData1" style="margin-top:10px; margin-left:30px;" onclick="OutputSaveData()">セーブデータ出力</button><br>
+      入力エリア<br>
+      <textarea rows="3" cols="50" id="ImportTextArea1" name="ImportTextArea1"></textarea><br>
+      出力エリア<br>
+      <textarea rows="3" cols="50" id="ExportTextArea1" name="ExportTextArea1"></textarea><br>  
+        
+      <button type="button" id="ImportTaskData1" style="margin-top:10px; margin-left:30px;" onclick="ImportTaskData()">タスクデータインポート</button>
+	  <button type="button" id="ExportAllTaskData1" style="margin-top:10px; margin-left:30px;" onclick="ExportAllTaskData()">全タスクデータエクスポート</button><br>
+	  <button type="button" id="ImportCategoryData1" style="margin-top:10px; margin-left:30px;" onclick="ImportCategoryData()">カテゴリデータインポート</button>
+	  <button type="button" id="ExportAllCategoryData1" style="margin-top:10px; margin-left:30px;" onclick="ExportAllCategoryData()">全カテゴリデータエクスポート</button><br>
+      
+    </div>
+    <!-- タスク登録タブ -->
+    <div id="page1-3" class="TabPage">
+      <form id="registTaskFormOnTab1-3">
+	  タスク登録<br>
+	  タイトル: <input type="text" id="TaskTitleOnTab1-3" name="TaskTitle" size="30"><br>
+	  説明:<br>
+	  <textarea id="TaskDescriptionOnTab1-3" name="description" rows="5" cols="30"></textarea><br>
+	  頻度:<br>
+	      	<input type="radio" name="Hindo" id="HindoId1" value="Hindo_Once">単発<br>
+	      	<input type="radio" name="Hindo" id="HindoId2" value="Hindo_Daily">毎日<br>
+			<input type="radio" name="Hindo" id="HindoId3" value="Hindo_SWD">曜日指定<br>
+				<span id="SWDListHyoki" style="margin-top:10px; margin-left:20px;">
+					<span style="margin-left:4px;">日</span>
+					<span style="margin-left:4px;">月</span>
+					<span style="margin-left:4px;">火</span>
+					<span style="margin-left:4px;">水</span>
+					<span style="margin-left:4px;">木</span>
+					<span style="margin-left:4px;">金</span>
+					<span style="margin-left:4px;">土</span>
+				</span>
+				<br>
+				<span id="SWDList" style="margin-top:10px; margin-left:20px;">
+					<input type="checkbox" name="Youbi" id="YoubiId1" value="Sunday">
+					<input type="checkbox" name="Youbi" id="YoubiId2" value="Monday">
+					<input type="checkbox" name="Youbi" id="YoubiId3" value="Tuesday">
+					<input type="checkbox" name="Youbi" id="YoubiId4" value="Wednesday">
+					<input type="checkbox" name="Youbi" id="YoubiId5" value="Thursday">
+					<input type="checkbox" name="Youbi" id="YoubiId6" value="Friday">
+					<input type="checkbox" name="Youbi" id="YoubiId7" value="Saturday">
+				</span><br>
+
+			<input type="radio" name="Hindo" id="HindoId4" value="Hindo_Weekly">毎週<br>
+			<input type="radio" name="Hindo" id="HindoId5" value="Hindo_Monthly">毎月<br>
+			<input type="radio" name="Hindo" id="HindoId6" value="Hindo_Yearly">毎年<br>
+			カテゴリ<br>
+			<select id="TaskCategoryOnTab1-3" name="TaskCategory" size="1">
+			</select><br>
+			獲得Exp:<input type="text" id="TaskClearExpOnTab1-3" name="TaskClearExp" size="5"><br>
+			<button type="button" id="searchBtnOnTab1-3" style="margin-top:10px; margin-left:50px;" onclick="RegistTask()">登録</button><br>
+	  </form>
+    </div>
+    <!-- レベル一覧タブ -->
+    <div id="page1-5" class="TabPage">
+	  カテゴリ別レベル一覧
+	  <table border="1"  id="LevelInfoListTableOnTab1-5" style="display:none" >
+	  </table>
+    </div>
+    <!-- レベルアップスピード管理タブ -->
+    <div id="page1-6" class="TabPage">
+	  レベルアップに必要なExp一覧<br>
+	  <form id="needExpListFormOnTab1-6">
+	      <button type="button" id="exportBtnOnTab1-6" style="margin-top:10px; margin-left:20px;" onclick="ExportSelectedCategory()">チェックしたカテゴリをエクスポート</button><br>
+		  <table border="1"  id="NeedExpListTableOnTab1-6" style="display:none" ></table>
+	  </form>
+    </div>
+    <!-- カテゴリ追加タブ -->
+    <div id="page1-7" class="TabPage">
+      カテゴリ追加<br>
+      カテゴリ名:<input type="text" id="CategoryNameOnTab1-7" name="CategoryName" size="30"><br>
+      <button type="button" id="registBtnOnTab1-7" style="margin-top:10px; margin-left:50px;" onclick="RegistCategory()">追加</button><br>
+    </div>
+    <!-- カテゴリ削除タブ -->
+    <div id="page1-8" class="TabPage">
+		カテゴリ削除<br>
+		カテゴリ名:
+		<select id="CategoryNameOnTab1-8" name="CategoryNameOnTab1-8" size="1">
+		</select><br>
+      <button type="button" id="deleteBtnOnTab1-8" style="margin-top:10px; margin-left:50px;" onclick="DeleteCategory()">削除</button><br>      
+    </div>
+    <!-- 詳細タブ -->
+    <div id="page1-4" class="TabPage">
+	  タスク詳細<br>
+	  <div id="DetailTask1">
+	  </div>
+    </div>
+    <!-- タスク編集タブ -->
+    <div id="page1-9" class="TabPage">
+	  タスク編集<br>
+	  <div id="EditTask1">
+      <form id="editTaskFormOnTab1-9">
+	  タイトル: <input type="text" id="TaskTitleOnTab1-9" name="TaskTitle" size="30"><br>
+	  説明:<br>
+	  <textarea id="TaskDescriptionOnTab1-9" name="description" rows="5" cols="30"></textarea><br>
+	  頻度:<br>
+	      	<input type="radio" name="Hindo" id="HindoId1" value="Hindo_Once">単発<br>
+	      	<input type="radio" name="Hindo" id="HindoId2" value="Hindo_Daily">毎日<br>
+			<input type="radio" name="Hindo" id="HindoId3" value="Hindo_SWD">曜日指定<br>
+				<span id="SWDListHyoki" style="margin-top:10px; margin-left:20px;">
+					<span style="margin-left:4px;">日</span>
+					<span style="margin-left:4px;">月</span>
+					<span style="margin-left:4px;">火</span>
+					<span style="margin-left:4px;">水</span>
+					<span style="margin-left:4px;">木</span>
+					<span style="margin-left:4px;">金</span>
+					<span style="margin-left:4px;">土</span>
+				</span>
+				<br>
+				<span id="SWDList" style="margin-top:10px; margin-left:20px;">
+					<input type="checkbox" name="Youbi" id="YoubiId1" value="Sunday">
+					<input type="checkbox" name="Youbi" id="YoubiId2" value="Monday">
+					<input type="checkbox" name="Youbi" id="YoubiId3" value="Tuesday">
+					<input type="checkbox" name="Youbi" id="YoubiId4" value="Wednesday">
+					<input type="checkbox" name="Youbi" id="YoubiId5" value="Thursday">
+					<input type="checkbox" name="Youbi" id="YoubiId6" value="Friday">
+					<input type="checkbox" name="Youbi" id="YoubiId7" value="Saturday">
+				</span><br>
+
+			<input type="radio" name="Hindo" id="HindoId4" value="Hindo_Weekly">毎週<br>
+			<input type="radio" name="Hindo" id="HindoId5" value="Hindo_Monthly">毎月<br>
+			<input type="radio" name="Hindo" id="HindoId6" value="Hindo_Yearly">毎年<br>
+			カテゴリ<br>
+			<select id="TaskCategoryOnTab1-9" name="TaskCategory" size="1">
+			</select><br>
+			獲得Exp:<input type="text" id="TaskClearExpOnTab1-9" name="TaskClearExp" size="5"><br>
+			<button type="button" id="updateBtnOnTab1-9" style="margin-top:10px; margin-left:50px;" onclick="UpdateTask()">更新</button><br>
+	  </form>
+	  </div>
+    </div>
+  </div>
+</div>
+<!-- 広告位置 -->
+<div class="adbox1">
+<br><br><br><br><br>
+<br><br><br><br><br>
+</div>
+
+<script src="sample6.js"></script>
+
+
+</body>
+</html>

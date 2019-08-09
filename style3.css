@@ -1,0 +1,46 @@
+.js-tabs ul.tab_menu{
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+}
+.js-tabs ul.tab_menu li{
+  display:inline;
+  background:#ffffff;
+}
+.js-tabs .tab_menu li a{
+}
+.js-tabs .tab_menu li a:link,
+.js-tabs .tab_menu li a:visited{
+  background-color:#666;
+  color:#fff;
+}
+.js-tabs .tab_menu li a.active:link,
+.js-tabs .tab_menu li a.active:visited{
+  background-color:#444;
+  color:#fff;
+}
+.js-tabs .tab_menu li a:hover{
+  background-color:#333;
+  color:#f0f;
+}
+.tab_content{
+  over-flow: scroll;
+  position:relative;
+  height:200px;
+}
+.tab_content div.TabPage{
+  width:1000px;
+  height:200px;
+  position:absolute;
+  color:#222;
+}
+
+#page1-1{
+  background-color:#ffa;
+}
+#page1-2{
+  background-color:#faf;
+}
+#page1-3{
+  background-color:#aff;
+}
